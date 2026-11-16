@@ -1,7 +1,7 @@
 # ----------------------------------------
 # Author: kam
 # Date: Mon Nov 16 12:38:55 CET 2026
-#
+# License: MIT
 # ----------------------------------------
 
 PS1='[\u@\h] '
@@ -53,6 +53,10 @@ export LESS_TERMCAP_ZN=$'\e[74m'
 export LESS_TERMCAP_ZV=$'\e[75m'
 export LESS_TERMCAP_ZO=$'\e[73m'
 export LESS_TERMCAP_ZW=$'\e[75m'
+export GROFF_NO_SGR=1
+
+# Overwritte
+alias grep="rg"
 
 # Shortcuts
 alias nf="neofetch --ascii_distro openbsd_small"
@@ -66,5 +70,6 @@ alias clip='xclip -selection clipboard'
 # Coloring stuff
 alias ls="eza"
 alias la="ls -la"
-alias ll="ls -l"
+alias ll="ls -lah"
 alias hl="rg --passthru"
+
