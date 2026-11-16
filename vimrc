@@ -1,10 +1,8 @@
-source $VIMRUNTIME/defaults.vim
-
-call plug#begin('~/.vim/plugged')
-Plug 'rust-lang/rust.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
-call plug#end()
+" ----------------------------------------
+" Author: kam
+" Date: Mon Nov 16 16:11:01 CET 2026
+" License: MIT
+" ----------------------------------------
 
 set number
 set relativenumber
@@ -12,20 +10,25 @@ set nowrap
 set sidescroll=1
 set encoding=utf-8
 
-let g:rustfmt_autosave = 1         " auto-format on save via rustfmt
-autocmd BufWritePre *.rs ALEFix    " optional extra fix-on-save
+syntax on
 
-" Use Tab to navigate/select the completion popup
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? "\<C-n>" :
-      \ "\<Tab>"
-inoremap <silent><expr> <S-TAB>
-      \ coc#pum#visible() ? "\<C-p>" :
-      \ "\<C-h>"
+let c_comment_strings=1
 
-" Confirm selection with Enter
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+let mapleader = " "
+let maplocalleader = " "
+nnoremap <Space> <Nop> 
 
-" Snippet navigation kept separate and simple
-snoremap <silent> <TAB> <Esc>:call coc#snippet_next()<CR>
-snoremap <silent> <S-TAB> <Esc>:call coc#snippet_prev()<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>x :x<CR>
+nnoremap <leader>ev :edit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" Bind for search and replease
+nnoremap <leader>s <ESC>:%s/old/new/g<left><left>
+
+" Bind for executing commands and append stdout 
+nnoremap <leader>sys <ESC>a<C-r>=system('')<left><left>
+
+" Header for config files, edit comment when you use it
+nnoremap <leader>h <ESC>a# -<ESC>"9x40"9po# Author: kam<CR># Date: <ESC>a<C-r>=system('date')<CR># License: MIT<CR># <ESC>40"9pnnoremap <leader>h <ESC>a# -<ESC>"9x40"9po# Author: kam<CR># Date: <ESC>a<C-r>=system('date')<CR># License: MIT<CR># <ESC>40"9p

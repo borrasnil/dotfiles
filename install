@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/bash
 #
 # install all files by symlink them.
 # this way, updating them is as simple as git pull

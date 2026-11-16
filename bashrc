@@ -12,7 +12,6 @@ fi
 
 PATH=$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin
 
-
 # History config
 export HISTSIZE=10000
 export HISTFILE=$HOME/.bash-history
@@ -55,21 +54,19 @@ export LESS_TERMCAP_ZO=$'\e[73m'
 export LESS_TERMCAP_ZW=$'\e[75m'
 export GROFF_NO_SGR=1
 
-# Overwritte
-alias grep="rg"
-
 # Shortcuts
 alias nf="neofetch --ascii_distro openbsd_small"
 alias ga="git add"
 alias gc="git commit"
 alias gpo="git push origin"
+alias la="ls -la"
+alias ll="ls -lah"
+alias hl="rg --passthru"
 
 # Clipboard related
 alias clip='xclip -selection clipboard'
 
 # Coloring stuff
-alias ls="eza"
-alias la="ls -la"
-alias ll="ls -lah"
-alias hl="rg --passthru"
+[[ -x $(type -P rg) ]] && alias grep="rg"
+[[ -x $(type -P eza) ]] && alias ls="eza"
 
