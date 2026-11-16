@@ -1,0 +1,27 @@
+# 
+#
+# install all files by symlink them.
+# this way, updating them is as simple as git pull
+#
+# idea extracted from dave eddy
+# - https://github.com/bahamas10/dotfiles
+#
+# Author: kam
+# Date: Mon Nov 16 13:27:09 CET 2026
+# License: MIT
+
+symlink() {
+	printf '%55s -> %s\n' "${1/#$HOME/\~}" "${2/#$HOME/\~}"
+	ln -nsf "$@"
+}
+
+dotfiles=(
+	bashrc
+	vimrc
+	inputrc
+)
+
+for f in "${dotfiles[@]}"; do
+	[[ -d ~/.$f && ! -L ~/.$f ]] && rm -r ~/."$f"
+	symlink "$PWD/$f" ~/."$f"
+done

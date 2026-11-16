@@ -1,48 +1,70 @@
+# ----------------------------------------
+# Author: kam
+# Date: Mon Nov 16 12:38:55 CET 2026
 #
-# ~/.bashrc
-#
+# ----------------------------------------
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+PS1='[\u@\h] '
+
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval $(ssh-agent -s) > /dev/null
+fi
+
+PATH=$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin
 
 
-#
-# INIT
-#
+# History config
+export HISTSIZE=10000
+export HISTFILE=$HOME/.bash-history
 
+export PATH HOME TERM
 
-PATH="$PATH:/opt/scripts:/home/kam/.cargo/bin"
-fastfetch
+# Basic vars
+export TERM="st"
+export EDITOR="vim"
+export GREP_COLOR='1;36'
+export TZ="Europe/Madrid"
+export PAGER="less"
+export VISUAL="vim"
 
-#
-# ALIASES
-#
+export COLOR1=$'\x1b[38;5;87m'   # cyan
+export COLOR2=$'\x1b[38;5;211m'  # magenta
+export COLOR3=$'\x1b[38;5;120m'  # green
+export COLOR4=$'\x1b[38;5;241m'  # dim
+export COLOR5=$'\x1b[38;5;223m'  # off-white (text)
+export RST=$'\x1b[0m'
 
-alias ls='eza'
-alias la='eza -la --sort=type --reverse'
-alias grep='grep --color=auto'
-alias hl='rg --smart-case --passthru'
-alias ..='cd ..'
-alias cd..='cd ..'
-alias wimi='curl ipinfo.io/json | jq'
+export BOLD=$'\x1b[1m'
+export BOLDOFF=$'\x1b[22m'
+export ITALICS=$'\x1b[3m'
+export ITALICSOFF=$'\x1b[23m'
 
-alias ff='fastfetch'
-alias p='sudo pacman'
-alias t='tmux new-session -A -s main'
+# Support colors in less
+export LESS_TERMCAP_mb=$'\e[1;31m'
+export LESS_TERMCAP_md=$'\e[1;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[1;33;44m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[4;1;32m'
+export LESS_TERMCAP_mr=$'\e[7m'
+export LESS_TERMCAP_mh=$'\e[2m'
+export LESS_TERMCAP_ZN=$'\e[74m'
+export LESS_TERMCAP_ZV=$'\e[75m'
+export LESS_TERMCAP_ZO=$'\e[73m'
+export LESS_TERMCAP_ZW=$'\e[75m'
 
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
+# Shortcuts
+alias nf="neofetch --ascii_distro openbsd_small"
+alias ga="git add"
+alias gc="git commit"
+alias gpo="git push origin"
 
-alias nimv='nvim'
-alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
-alias pign='ping'
-alias crul='curl'
+# Clipboard related
+alias clip='xclip -selection clipboard'
 
-# tests
-
-alias nv='NVIM_APPNAME=nvim_tests nvim'
-
-#PS1='[\u@\h \W]\$ '
+# Coloring stuff
+alias ls="eza"
+alias la="ls -la"
+alias ll="ls -l"
+alias hl="rg --passthru"
