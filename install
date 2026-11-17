@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # install all files by symlink them.
 # this way, updating them is as simple as git pull
@@ -19,6 +19,7 @@ dotfiles=(
 	bashrc
 	vimrc
 	inputrc
+	gitconfig
 )
 
 for f in "${dotfiles[@]}"; do

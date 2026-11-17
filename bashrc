@@ -4,7 +4,15 @@
 # License: MIT
 # ----------------------------------------
 
-PS1='[\u@\h] '
+# Grab a field from given input
+# Adapted from http://www.brendangregg.com/Shell/field
+#
+# $ echo -e '  three    different\tcolumns ' | field 2
+# different
+field() {
+	awk -F "${2:- }" "{ print \$${1:-1} }"
+}
+
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval $(ssh-agent -s) > /dev/null
@@ -32,11 +40,12 @@ export COLOR3=$'\x1b[38;5;120m'  # green
 export COLOR4=$'\x1b[38;5;241m'  # dim
 export COLOR5=$'\x1b[38;5;223m'  # off-white (text)
 export RST=$'\x1b[0m'
-
 export BOLD=$'\x1b[1m'
 export BOLDOFF=$'\x1b[22m'
 export ITALICS=$'\x1b[3m'
 export ITALICSOFF=$'\x1b[23m'
+
+PS1='[\u@\h \w]\$$RST '
 
 # Support colors in less
 export LESS_TERMCAP_mb=$'\e[1;31m'
@@ -55,7 +64,7 @@ export LESS_TERMCAP_ZW=$'\e[75m'
 export GROFF_NO_SGR=1
 
 # Shortcuts
-alias nf="neofetch --ascii_distro openbsd_small"
+alias nf="neofetch"
 alias ga="git add"
 alias gc="git commit"
 alias gpo="git push origin"
@@ -68,5 +77,5 @@ alias clip='xclip -selection clipboard'
 
 # Coloring stuff
 [[ -x $(type -P rg) ]] && alias grep="rg"
-[[ -x $(type -P eza) ]] && alias ls="eza"
-
+[[ -x $(type -P eza) ]] && alias ls="eza --group-directories-first"
+[[ -x $(type -P bat) ]] && alias cat="bat"

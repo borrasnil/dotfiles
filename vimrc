@@ -18,11 +18,11 @@ let mapleader = " "
 let maplocalleader = " "
 nnoremap <Space> <Nop> 
 
+nnoremap <leader>ev :edit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>x :x<CR>
-nnoremap <leader>ev :edit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Bind for search and replease
 nnoremap <leader>s <ESC>:%s/old/new/g<left><left>
@@ -31,4 +31,4 @@ nnoremap <leader>s <ESC>:%s/old/new/g<left><left>
 nnoremap <leader>sys <ESC>a<C-r>=system('')<left><left>
 
 " Header for config files, edit comment when you use it
-nnoremap <leader>h <ESC>a# -<ESC>"9x40"9po# Author: kam<CR># Date: <ESC>a<C-r>=system('date')<CR># License: MIT<CR># <ESC>40"9pnnoremap <leader>h <ESC>a# -<ESC>"9x40"9po# Author: kam<CR># Date: <ESC>a<C-r>=system('date')<CR># License: MIT<CR># <ESC>40"9p
+nnoremap <leader>h <ESC>ggO# -<ESC>"9x40"9po# Author: kam<CR># Date: <ESC>a<C-r>=system('date')<CR># License: MIT<CR># <ESC>40"9pnnoremap <leader>h <ESC>a# -<ESC>"9x40"9po# Author: kam<CR># Date: <ESC>a<C-r>=system('date')<CR># License: MIT<CR># <ESC>40"9p
