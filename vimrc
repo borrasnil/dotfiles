@@ -21,8 +21,8 @@ nnoremap <Space> <Nop>
 nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
 nnoremap <leader>x :x<CR>
+nnoremap <leader>q :q<CR>
 
 " Bind for search and replease
 nnoremap <leader>s <ESC>:%s/old/new/g<left><left>

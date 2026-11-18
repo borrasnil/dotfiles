@@ -2,5 +2,13 @@
 
 My personal dotfiles.
 
-<img width="890" height="519" alt="image" src="https://github.com/user-attachments/assets/b9b12fd2-8c83-4639-9ade-93bd664de6cf" />
+---
+
+## Installation
+The installation script symlinks the files so updating them is as easy as doing `git pull`
+
+```bash
+git clone https://github.com/borrasnil/dotfiles && cd dotfiles
+make install
+```
 
